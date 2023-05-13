@@ -1,86 +1,88 @@
 owl-toolkit
 ===========
-
 owl-toolkit is a set of command line tools for OWL files based on the owl-api library.
 
-Download
+This repositary is a clone of ghxiao's ported to newer version of Java. The aim is both to retain the original functionality and make some additional improvements.
+
+Download precompiled binaries
 ---------
-https://github.com/ghxiao/owl-toolkit/releases
+https://github.com/matushedera/owl-toolkit/releases
 
 Build from source
 ---------
-1. `git clone https://github.com/ghxiao/owl-toolkit.git`
+1. `git clone https://github.com/matushedera/owl-toolkit.git`
 2. `cd owl-toolkit`
-3. `./gradlew distZip`
-
-Then you will find the generated zip file in the folder `build/distributions`.
-
+3. `mvn package`
 
 Usage
 ----------
 
-### owl-convert
-
-* `owl-convert` converts the input OWL ontology to another format
-
+Add the command script to the PATH, eg:
 ```console
-$ owl-convert {-rdfxml | -owlxml | -turtle | -manchester} input.owl
+$ ln -s "$(pwd)/bin/owltk" /usr/local/bin/owltk
 ```
 
-### owl-declarations
+### owltk convert
 
-* `owl-declarations` extracts the OWL Declaration Axioms from the input ontology. 
+* converts the input OWL ontology to another format
+
+```console
+$ owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file
+```
+
+### owltk declarations
+
+* extracts the OWL Declaration Axioms from the input ontology. 
 It is very useful when user wants to disable the ontology reasoning.
 
 ```console
-$ owl-declarations input.owl
+$ owltk declarations input_file output_file
 ```
 
 
-### owl-merge
+### owltk merge
 
-* `owl-merge` merges several OWL files into a single one
+* merges several OWL files into a single one
 
 ```console
-$ owl-merge [-iri <iri>] file1.owl ... filen.owl
+$ owltk merge output_file input_file [output_file]...
 ```
 
-### owl-metrics
+### owltk metrics
 
-* `owl-metrics` prints the metrics (e.g. number of concepts/propertes/ABox assertions) of an OWL file
+* prints the metrics (e.g. number of concepts/propertes/ABox assertions) of an OWL file
 
 ```console
-$ owl-metrics [-v] file.owl
+$ owltk metrics [-v] input_file
 ```
 
-### owl-individuals
+### owltk individuals
 
-* `owl-individuals` extract OWLIndividuals from an OWL file
+* extract OWLIndividuals from an OWL file
 
 ```console
-$ owl-individuals file.owl
+$ owltk individuals input_file [output_file]
 ```
 
-### owl-pdf
+### owltk pdf
 
-* `owl-pdf` converts the OWL file to a pdf file in DL format
+* converts the OWL file to a pdf file in DL format
   
 ```console
-$ owl-pdf file.owl
+$ owltk pdf input_file.tex
 ```
 
-### owl-profilize
+### owltk profilize
 
-* `owl-profilize` cuts the OWL file to a profile (incl. RL, EL, QL) by dropping violated axioms
+* cuts the OWL file to a profile (incl. RL, EL, QL) by dropping violated axioms
 
 ```console
-$ owl-profilize {-rl | -el | -ql} file.owl
+$ owltk profilize {-rl | -el | -ql} input_file output_file
 ```
-### owl-materialize-imports
+### owltk materialize
 
-* `owl-materialize-imports` materializes the imports of the input ontology, that is, 
-it replaces the `import` declaration by the concrete axioms from the imported ontologies. 
+* materializes the imports of the input ontology, that is, it replaces the `import` declaration by the concrete axioms from the imported ontologies. 
 
 ```console
-$ owl-materialize-imports file.owl 
+$ owltk materialize input_file output_file
 ```
