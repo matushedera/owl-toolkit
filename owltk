@@ -72,10 +72,10 @@ case $1 in
 			echo "Usage: owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file"
 		fi;;
 	'profilize')
-		if [[ $# = 3 && -f $3 ]]; then
+		if [[ $# = 4 && -f $3 && ("$2" == '-rl' || "$2" == '-el' || "$2" == '-ql') ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLProfilization "${@:2}"
 		else
-			echo "Usage: owltk profilize {-rl | -el | -ql} input_file"
+			echo "Usage: owltk profilize {-rl | -el | -ql} input_file output_file"
 		fi;;
 	*) echo -e 'Usage: owltk [classes | convert] [OPTIONS] file...\n
 	owltk classes input_file [output_file]
@@ -87,6 +87,6 @@ case $1 in
 	owltk metrics [-v] input_file
 	owltk objectprop input_file [output_file]
 	owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file
-	owltk profilize {-rl | -el | -ql} input_file
+	owltk profilize {-rl | -el | -ql} input_file output_file
 		';;
 esac
