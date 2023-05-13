@@ -54,17 +54,16 @@ case $1 in
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLMerger "${@:2}"
 		fi;;
 	'metrics')
-		if [[ ($# = 2 && -f $2) || ($# = 3 && -f $3) ]]; then
-			echo $#
+		if [[ ($# = 2 && -f $2) || ($# = 3 && -f $3 && "$2" == '-v') ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLMetrics "${@:2}"
 		else
 			echo "Usage: owltk metrics [-v] input_file"
 		fi;;
-	'objectproperties')
+	'objectprop')
 		if [[ $# = 2 && -f $2 ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLObjectProperties "${@:2}"
 		else
-			echo "Usage: owltk objectproperties input_file"
+			echo "Usage: owltk objectprop input_file"
 		fi;;
 	'convert')
 		if [[ $# = 4 && -f $3 ]]; then
@@ -86,7 +85,7 @@ case $1 in
 	owltk materialize-imports input_file
 	owltk merge output_file input_file [output_file]...
 	owltk metrics [-v] input_file
-	owltk objectproperties input_file
+	owltk objectprop input_file
 	owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file
 	owltk profilize {-rl | -el | -ql} input_file
 		';;
