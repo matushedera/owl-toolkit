@@ -2,7 +2,9 @@ owl-toolkit
 ===========
 owl-toolkit is a set of command line tools for OWL files based on the owl-api library.
 
-This repositary is a clone of ghxiao's project ported to newer version of Java. The aim is both to retain the original functionality and make some additional improvements.
+This repositary is a clone of ghxiao's project ported to a newer version of Java. The aim is both to retain the original functionality and make some additional improvements.
+
+A web application [owlweb.herokuapp.com](https://owlweb.herokuapp.com/) of this project can be used for merging, converting and analyzing ontologies. If you prefer to install owl-toolkit locally, follow the instructions below.
 
 Download precompiled binaries
 ---------
@@ -117,5 +119,5 @@ $ owltk individuals input_file [output_file]
 * *new* save to file option added
 
 ```console
-$ owltk individuals input_file [output_file]
+$ owltk classes input_file [output_file]
 ```
