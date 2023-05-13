@@ -2,13 +2,13 @@ owl-toolkit
 ===========
 owl-toolkit is a set of command line tools for OWL files based on the owl-api library.
 
-This repositary is a clone of ghxiao's ported to newer version of Java. The aim is both to retain the original functionality and make some additional improvements.
+This repositary is a clone of ghxiao's project ported to newer version of Java. The aim is both to retain the original functionality and make some additional improvements.
 
 Download precompiled binaries
 ---------
 https://github.com/matushedera/owl-toolkit/releases
 
-Build from source
+Or build from source
 ---------
 1. `git clone https://github.com/matushedera/owl-toolkit.git`
 2. `cd owl-toolkit`
@@ -16,6 +16,10 @@ Build from source
 
 Usage
 ----------
+
+```console
+$ cd owl-toolkit
+```
 
 Add the command script to the PATH, eg:
 ```console
@@ -56,14 +60,6 @@ $ owltk merge output_file input_file [output_file]...
 $ owltk metrics [-v] input_file
 ```
 
-### owltk individuals
-
-* extract OWLIndividuals from an OWL file
-
-```console
-$ owltk individuals input_file [output_file]
-```
-
 ### owltk pdf
 
 * converts the OWL file to a pdf file in DL format
@@ -79,10 +75,47 @@ $ owltk pdf input_file.tex
 ```console
 $ owltk profilize {-rl | -el | -ql} input_file output_file
 ```
+
 ### owltk materialize
 
-* materializes the imports of the input ontology, that is, it replaces the `import` declaration by the concrete axioms from the imported ontologies. 
+* materializes the imports of the input ontology, that is, it replaces the `import` declaration by the concrete axioms from the imported ontologies
 
 ```console
 $ owltk materialize input_file output_file
+```
+
+### owltk dataprop
+
+* extracts data properties
+* *new* save to file option added
+
+```console
+$ owltk dataprop input_file [output_file]
+```
+
+### owltk objectprop
+
+* extracts object properties
+* *new* save to file option added
+
+```console
+$ owltk objectprop input_file [output_file]
+```
+
+### owltk individuals
+
+* extracts individuals
+* *new* save to file option added
+
+```console
+$ owltk individuals input_file [output_file]
+```
+
+### owltk classes
+
+* extracts classes
+* *new* save to file option added
+
+```console
+$ owltk individuals input_file [output_file]
 ```
