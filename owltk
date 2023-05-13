@@ -36,16 +36,16 @@ case $1 in
 			echo "Usage: owltk dataprop input_file [output_file]"
 		fi;;
 	'individuals')
-		if [[ ($# = 2 && -f $2) || ($# = 3 && -f $2)]]; then
+		if [[ ($# = 2 && -f $2) || ($# = 3 && -f $2) ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLIndividuals "${@:2}"
 		else
 			echo "Usage: owltk individuals input_file [output_file]"
 		fi;;
-	'materialize-imports')
-		if [[ $# = 2 && -f $2 ]]; then
+	'materialize')
+		if [[ $# = 3 && -f $2 ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLImportsMaterialization "${@:2}"
 		else
-			echo "Usage: owltk materialize-imports input_file"
+			echo "Usage: owltk materialize input_file output_file"
 		fi;;
 	'merge')
 		if [[ $# = 1 ]]; then
@@ -82,7 +82,7 @@ case $1 in
 	owltk declarations input_file output_file
 	owltk dataprop input_file [output_file]
 	owltk individuals input_file [output_file]
-	owltk materialize-imports input_file
+	owltk materialize input_file output_file
 	owltk merge output_file input_file [output_file]...
 	owltk metrics [-v] input_file
 	owltk objectprop input_file [output_file]
