@@ -66,7 +66,7 @@ case $1 in
 			echo "Usage: owltk objectprop input_file [output_file]"
 		fi;;
 	'convert')
-		if [[ $# = 4 && -f $3 ]]; then
+		if [[ $# = 4 && -f $3 && ("$2" == '-rdfxml' || "$2" == '-owlxml' || "$2" == '-turtle' || "$2" == '-fss' || "$2" == '-latex' || "$2" == '-manchester') ]]; then
 			${java} -cp "${DIR}/target/*:${DIR}/target/dependency/*" sk.matfyz.owltoolkit.OWLConverter "${@:2}"
 		else
 			echo "Usage: owltk convert {-rdfxml | -owlxml | -turtle | -fss | -latex | -manchester } input_file output_file"
