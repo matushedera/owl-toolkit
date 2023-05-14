@@ -25,7 +25,7 @@ $ cd owl-toolkit
 
 Add the command script to the PATH, eg:
 ```console
-$ ln -s "$(pwd)/bin/owltk" /usr/local/bin/owltk
+$ ln -s "$(pwd)/owltk" /usr/local/bin/owltk
 ```
 
 ### owltk convert
